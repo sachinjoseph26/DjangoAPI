@@ -20,18 +20,18 @@ def departmentApi(request,id=0):
             departments_serialzer.save()
             return JsonResponse("Added Successfully",safe=False)
         return JsonResponse("Fail",safe=False)
-#    elif request.method=='PUT':
-#        department_data=JSONParser().parse(request)
-#        department=Departments.objects.get(DepartmentID=department_data['DepartmentID'])
-#        departments_serialzer=DepartmentSerializer(department,data=department_data)
-#        if departments_serialzer.is_valid():
-#            departments_serialzer.save()
-#            return JsonResponse("Updated Successfully",safe=False)
-#        return JsonResponse("Failed to Update")
-#    elif request.method=='DELETE':
-#        department=Departments.objects.get(DepartmentID=id)
-#        department.delete()
-#        return JsonResponse("Deleted Successfully",safe=False)
+    elif request.method=='PUT':
+        department_data=JSONParser().parse(request)
+        department=Departments.objects.get(DepartmentID=department_data['DepartmentID'])
+        departments_serialzer=DepartmentSerializer(department,data=department_data)
+        if departments_serialzer.is_valid():
+            departments_serialzer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    elif request.method=='DELETE':
+        department=Departments.objects.get(DepartmentID=id)
+        department.delete()
+        return JsonResponse("Deleted Successfully",safe=False)
     
 
 
